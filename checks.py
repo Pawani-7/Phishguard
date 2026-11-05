@@ -129,12 +129,12 @@ def impersonates_brand(url):
     for brand, domains in OFFICIAL_DOMAINS.items():
         if brand in cleaned and not _is_official(host, domains):
             return brand
-        return None
+    return None
 
 
 #---------------- Check 8 ---------------
 
-def has_many_hypens_or_digits(url, max_hyphens=2, max_digits=3):
+def has_many_hyphens_or_digits(url, max_hyphens=2, max_digits=3):
     """Too many hyphens or digits in the domain is a warning sign,
     e.g. secure-lofin-paypal-verify.com. Raw IP addrss are skipped
     here because check 2 already covers them."""

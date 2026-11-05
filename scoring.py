@@ -13,7 +13,7 @@ from checks import(
     uses_https,
     find_suspicious_words,
     impersonates_brand,
-    has_many_hypens_or_digits,
+    has_many_hyphens_or_digits,
     uses_url_shortener,
 )
 
@@ -88,7 +88,7 @@ def analyse(url):
         add(WEIGHTS["brand_lookalike"],
             f"Looks like it is imitating '{brand}'")
  
-    if has_many_hypens_or_digits(url):
+    if has_many_hyphens_or_digits(url):
         add(WEIGHTS["hyphens_digits"],
             "Domain has many hyphens or digits")
  

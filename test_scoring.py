@@ -44,7 +44,7 @@ def test_url_shortener_scores_two():
 
 
 def test_long_link_adds_one_point():
-    result = analyse("htttps://example.com/" + "a" * 80)
+    result = analyse("https://example.com/" + "a" * 80)
     assert result["score"] == 1
 
 

@@ -1,3 +1,6 @@
 venv/
 __pycache__/
 *.db
+data/openphish_raw.txt
+data/phishing_links.txt
+data/results.csv
