@@ -85,9 +85,12 @@ def has_ip_address(url):
 #-------------- Check 3 ---------------
 
 def has_at_symbol(url):
-    """Anything before an @ is ignored by the browser, so attackers use it 
-    to show a trusted name frist and hide the real site after it.""" 
-    return "@" in url 
+    """Anything before an @ in the host part is ignored by browsers,
+    so attackers show a trusted name first and hide the real site after it."""
+    u = url.strip()
+    if "://" not in u:
+        u = "http://" + u
+    return "@" in urlparse(u).netloc
 
 
 #-------------- Check 4 ----------------

@@ -8,10 +8,10 @@ from scoring import analyse
 
 
 def main():
-    print("PhishGuard: type a link to check it (type q to quiet)")
+    print("PhishGuard: type a link to check it (type q to quit)")
     print("Links are analysed as text only and are never opened.")
     while True:
-        url = input("n/Link: ").strip()
+        url = input("\nLink: ").strip()
         if url.lower() in ("q", "quit", "exit"):
             print("Goodbye.")
             break

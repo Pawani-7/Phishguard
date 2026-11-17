@@ -26,7 +26,7 @@ def test_medium_link():
 
 def test_high_link():
     # IP (+3), @ (+3), no HTTPS (+1), word secure and login (+1) = 8
-    result = analyse("http://192.168.1.1/secure-login@bank.com")
+    result = analyse("http://secure-login@192.168.1.1/bank.com")
     assert result["score"] == 8
     assert result["level"] == "High"
 
@@ -51,3 +51,9 @@ def test_long_link_adds_one_point():
 def test_blank_input_is_invalid():
     assert analyse("  ")["level"] == "Invalid"
     assert analyse("")["level"] == "Invalid"
+    
+
+def test_at_in_path_is_not_flagged():
+    # an @ after the first slash is harmless, e.g. medium.com/@name
+    result = analyse("https://medium.com/@someone")
+    assert result["score"] == 0

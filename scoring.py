@@ -1,8 +1,8 @@
 """PhishGuard: scoring engine.
 
-Runs the nine checks from checks.py, adds a weighted point for each 
+Runs the eleven checks from checks.py, adds a weighted point for each 
 warning sign, and returns a risk level with the reasons.
-Links are only analysed as text. They are never opened.
+Links are only analyse as text. They are never opened.
 """
 
 from checks import(
