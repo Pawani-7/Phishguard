@@ -4,3 +4,5 @@ __pycache__/
 data/openphish_raw.txt
 data/phishing_links.txt
 data/results.csv
+data/openphish_raw2.txt
+data/phishing_links_fresh.txt

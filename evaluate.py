@@ -72,7 +72,8 @@ def print_summary(rows, threshold):
 
 def main():
     safe_links = read_links(SAFE_FILE)
-    phishing_links = read_links(PHISHING_FILE)
+    phishing_file = Path(sys.argv[1]) if len(sys.argv) > 1 else PHISHING_FILE
+    phishing_links = read_links(phishing_file)
     print(f"Loaded {len(safe_links)} safe links and {len(phishing_links)} phishing links.")
     print("Links are analysed as text only and are never opened.")
 

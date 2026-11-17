@@ -50,3 +50,15 @@ https://www.nic.in
 https://www.w3schools.com
 https://www.mozilla.org
 https://www.reddit.com
+http://neverssl.com
+https://www.google.com/search?q=how+to+learn+python+programming+for+beginners+step+by+step+guide+2026&sourceid=chrome&ie=UTF-8
+https://docs.google.com/document/d/1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789/edit?usp=sharing
+https://drive.google.com/file/d/1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789/view
+https://login.microsoftonline.com/common/oauth2/authorize
+https://www.paypal.com/in/signin
+https://appleid.apple.com/sign-in
+https://www.amazon.in/ap/signin
+https://github.com/Pawani-7/Phishguard
+https://react-bootstrap.github.io
+https://microsoft.github.io/Web-Dev-For-Beginners/
+https://security.googleblog.
