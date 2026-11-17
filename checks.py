@@ -32,7 +32,7 @@ OFFICIAL_DOMAINS ={
     "google": ["google.com", "google.co.in", "googleblog.com", "googleapis.com"],
     "amazon": ["amazon.com", "amazon.in"],
     "facebook": ["facebook.com"],
-    "microsoft": ["microsoft.com", "microsoftonline.com"],
+    "microsoft": ["microsoft.com", "microsoftonline.com", "microsoft.github.io"],
     "apple": ["apple.com"],
     "netflix": ["netflix.com"],
     "instagram": ["instagram.com"],

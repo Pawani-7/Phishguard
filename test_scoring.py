@@ -5,9 +5,9 @@ def test_risk_level_boundaries():
     assert risk_level(0) == "Low"
     assert risk_level(1) == "Low"
     assert risk_level(2) == "Medium"
-    assert risk_level(5) == "Medium"
-    assert risk_level(6) == "High"
-    assert risk_level(10) == "High"
+    assert risk_level(3) == "Medium"
+    assert risk_level(4) == "High"
+    assert risk_level(5) == "High"
 
 
 def test_safe_link_is_low():
@@ -18,10 +18,17 @@ def test_safe_link_is_low():
 
 
 def test_medium_link():
+    # no HTTPS (+1), word 'login' (+1) = 2
+    result = analyse("http://example.com/login")
+    assert result["score"] == 2
+    assert result["level"] == "Medium"
+
+
+def test_lookalike_link_is_high():
     # no HTTPS (+1), word 'login' (+1), imitates paypal (+3) = 5
     result = analyse("http://paypa1.com/login")
     assert result["score"] == 5
-    assert result["level"] =="Medium"
+    assert result["level"] == "High"
 
 
 def test_high_link():
@@ -51,9 +58,16 @@ def test_long_link_adds_one_point():
 def test_blank_input_is_invalid():
     assert analyse("  ")["level"] == "Invalid"
     assert analyse("")["level"] == "Invalid"
-    
+
 
 def test_at_in_path_is_not_flagged():
     # an @ after the first slash is harmless, e.g. medium.com/@name
     result = analyse("https://medium.com/@someone")
     assert result["score"] == 0
+
+
+def test_risky_tld_alone_is_medium():
+    # risky ending .xyz (+2) = 2
+    result = analyse("https://abc.xyz")
+    assert result["score"] == 2
+    assert result["level"] == "Medium"

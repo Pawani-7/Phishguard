@@ -122,6 +122,10 @@ def test_brand_trick_doamins():
     assert impersonates_brand("https://www.roblox.com/users/1/profile") is None
     assert not impersonates_brand("https://security.googleblog.com")
 
+def test_brand_official_github_io():
+    assert not impersonates_brand("https://microsoft.github.io/Web-Dev-For-Beginners/")
+    assert impersonates_brand("https://microsoft.github.io.evil.com/")
+
 
 #-------------- Check 8: hyphens or digits ------------
 

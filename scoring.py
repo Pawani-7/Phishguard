@@ -34,9 +34,9 @@ WEIGHTS = {
     "risky_tld": 2,
 }
 
-# Score limits: 0-1 Low, 2-5 Medium, 6 or more High
+# Score limits: 0-1 Low, 2-3 Medium, 4 or more High
 LOW_MAX = 1
-MEDIUM_MAX = 5
+MEDIUM_MAX = 3
 
 
 def risk_level(score):
