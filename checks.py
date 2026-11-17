@@ -18,6 +18,12 @@ URL_SHORTENERS = {
     "is.gd", "buff.ly", "rebrand.ly", "cutt.ly",
 }
 
+FREE_HOSTING = ["vercel.app", "pages.dev", "netlify.app", "github.io", "gitlab.io",
+                "blogspot.com", "gitbook.io", "web.app", "firebaseapp.com",
+                "weebly.com", "wixsite.com", "glitch.me", "herokuapp.com",
+                "workers.dev", "onrender.com", "webflow.io"]
+
+
 #Brand name -> the real domains that brand uses 
 OFFICIAL_DOMAINS ={
     "paypal": ["paypal.com"],
@@ -151,3 +157,13 @@ def uses_url_shortener(url):
     """Short links hide the real destination."""
     host = get_host(url).removeprefix("www.")
     return host in URL_SHORTENERS
+
+# ---------- Check 10 ----------
+
+def uses_free_hosting(url):
+    """Phishing pages are often put on free hosting sites."""
+    host = get_host(url)
+    return any(host == d or host.endswith("." + d) for d in FREE_HOSTING)
+ 
+
+

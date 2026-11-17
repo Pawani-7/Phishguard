@@ -15,6 +15,7 @@ from checks import(
     impersonates_brand,
     has_many_hyphens_or_digits,
     uses_url_shortener,
+    uses_free_hosting,
 )
 
 # Initial weights (they will be tuned after testing on your link set)
@@ -28,6 +29,7 @@ WEIGHTS = {
     "brand_lookalike": 3,
     "hyphens_digits": 1,
     "url_shortener": 2,
+    "free_hosting": 2,
 }
 
 # Score limits: 0-2 Low, 3-5 Medium, 6 or more High
@@ -95,7 +97,13 @@ def analyse(url):
     if uses_url_shortener(url):
         add(WEIGHTS["url_shortener"],
             "Uses a URL shortener that hides the real destination")
- 
+
+
+    if uses_free_hosting(url):
+        add(WEIGHTS["free_hosting"],
+            "Uses a free hosting service that is often used for phishing")
+        
+
     return {
         "url": url,
         "score": score,

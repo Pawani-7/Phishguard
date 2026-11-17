@@ -9,6 +9,7 @@ from checks import (
     impersonates_brand,
     has_many_hyphens_or_digits,
     uses_url_shortener,
+    uses_free_hosting,
 )
 
 
@@ -136,4 +137,13 @@ def test_url_shortener():
     assert uses_url_shortener("https://www.bit.ly/x")
     assert uses_url_shortener("https://tinyurl.com/x")
     assert not uses_url_shortener("https://example.com")
-    
+
+
+# ---------- Check 10: free hosting ----------
+
+def test_free_hosting():
+    assert uses_free_hosting("http://www.demo-site.vercel.app/")
+    assert uses_free_hosting("https://abc123.pages.dev/page")
+    assert uses_free_hosting("http://example.blogspot.com/")
+    assert not uses_free_hosting("https://www.google.com")
+    assert not uses_free_hosting("https://myvercel.app")
