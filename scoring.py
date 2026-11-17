@@ -32,8 +32,8 @@ WEIGHTS = {
     "free_hosting": 2,
 }
 
-# Score limits: 0-2 Low, 3-5 Medium, 6 or more High
-LOW_MAX = 2
+# Score limits: 0-1 Low, 2-5 Medium, 6 or more High
+LOW_MAX = 1
 MEDIUM_MAX = 5
 
 

@@ -3,8 +3,8 @@ from scoring import analyse, risk_level
 
 def test_risk_level_boundaries():
     assert risk_level(0) == "Low"
-    assert risk_level(2) == "Low"
-    assert risk_level(3) == "Medium"
+    assert risk_level(1) == "Low"
+    assert risk_level(2) == "Medium"
     assert risk_level(5) == "Medium"
     assert risk_level(6) == "High"
     assert risk_level(10) == "High"
@@ -40,7 +40,7 @@ def test_reasons_explain_the_result():
 def test_url_shortener_scores_two():
     result = analyse("https://bit.ly/abc")
     assert result["score"] == 2
-    assert result["level"] == "Low"
+    assert result["level"] == "Medium"
 
 
 def test_long_link_adds_one_point():
