@@ -21,13 +21,15 @@ URL_SHORTENERS = {
 FREE_HOSTING = ["vercel.app", "pages.dev", "netlify.app", "github.io", "gitlab.io",
                 "blogspot.com", "gitbook.io", "web.app", "firebaseapp.com",
                 "weebly.com", "wixsite.com", "glitch.me", "herokuapp.com",
-                "workers.dev", "onrender.com", "webflow.io"]
+                "workers.dev", "onrender.com", "webflow.io", "typedream.app","carrd.co",]
 
+
+RISKY_TLDS = {"xyz", "top", "click", "icu", "info", "buzz", "cfd"}
 
 #Brand name -> the real domains that brand uses 
 OFFICIAL_DOMAINS ={
     "paypal": ["paypal.com"],
-    "google": ["google.com", "google.co.in"],
+    "google": ["google.com", "google.co.in", "googleblog.com", "googleapis.com"],
     "amazon": ["amazon.com", "amazon.in"],
     "facebook": ["facebook.com"],
     "microsoft": ["microsoft.com", "microsoftonline.com"],
@@ -165,6 +167,12 @@ def uses_free_hosting(url):
     """Phishing pages are often put on free hosting sites."""
     host = get_host(url)
     return any(host == d or host.endswith("." + d) for d in FREE_HOSTING)
- 
+
+
+# ---------- Check 11 ----------
+def uses_risky_tld(url):
+    """Some cheap domain endings are used a lot for throwaway phishing sites."""
+    host = get_host(url)
+    return host.rsplit(".", 1)[-1] in RISKY_TLDS
 
 

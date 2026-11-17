@@ -16,6 +16,7 @@ from checks import(
     has_many_hyphens_or_digits,
     uses_url_shortener,
     uses_free_hosting,
+    uses_risky_tld,
 )
 
 # Initial weights (they will be tuned after testing on your link set)
@@ -30,6 +31,7 @@ WEIGHTS = {
     "hyphens_digits": 1,
     "url_shortener": 2,
     "free_hosting": 2,
+    "risky_tld": 2,
 }
 
 # Score limits: 0-1 Low, 2-5 Medium, 6 or more High
@@ -103,6 +105,10 @@ def analyse(url):
         add(WEIGHTS["free_hosting"],
             "Uses a free hosting service that is often used for phishing")
         
+
+    if uses_risky_tld(url):
+        add(WEIGHTS["risky_tld"],
+            "Uses a domain ending often seen in phishing sites")
 
     return {
         "url": url,

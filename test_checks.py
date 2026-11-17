@@ -8,8 +8,10 @@ from checks import (
     find_suspicious_words,
     impersonates_brand,
     has_many_hyphens_or_digits,
+    uses_risky_tld,
     uses_url_shortener,
     uses_free_hosting,
+    uses_risky_tld,
 )
 
 
@@ -118,6 +120,7 @@ def test_brand_trick_doamins():
     assert impersonates_brand("http://secure-paypal-login.com") == "paypal"
     assert impersonates_brand("https://roblox.com.ml/users/1/profile") == "roblox"
     assert impersonates_brand("https://www.roblox.com/users/1/profile") is None
+    assert not impersonates_brand("https://security.googleblog.com")
 
 
 #-------------- Check 8: hyphens or digits ------------
@@ -150,3 +153,13 @@ def test_free_hosting():
     assert uses_free_hosting("http://example.blogspot.com/")
     assert not uses_free_hosting("https://www.google.com")
     assert not uses_free_hosting("https://myvercel.app")
+    assert uses_free_hosting("http://access-ledgerz.typedream.app/")
+
+
+# ---------- Check 11: risky TLD ----------
+
+def test_risky_tld():
+    assert uses_risky_tld("https://your-secure.info/dh")
+    assert uses_risky_tld("http://abc.xyz/")
+    assert not uses_risky_tld("https://www.google.com")
+    assert not uses_risky_tld("http://192.168.1.1/")
