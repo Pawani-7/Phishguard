@@ -36,6 +36,7 @@ OFFICIAL_DOMAINS ={
     "instagram": ["instagram.com"],
     "paytm": ["paytm.com"],
     "hdfcbank": ["hdfcbank.com"],
+    "roblox": ["roblox.com"],
     }
 
 # Digits that attackers use in place of letters (paypal -> paypal)

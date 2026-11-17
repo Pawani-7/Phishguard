@@ -116,6 +116,8 @@ def test_brand_official_doamins_ok():
 def test_brand_trick_doamins():
     assert impersonates_brand("http://paypal.com.evil.com") == "paypal"
     assert impersonates_brand("http://secure-paypal-login.com") == "paypal"
+    assert impersonates_brand("https://roblox.com.ml/users/1/profile") == "roblox"
+    assert impersonates_brand("https://www.roblox.com/users/1/profile") is None
 
 
 #-------------- Check 8: hyphens or digits ------------
