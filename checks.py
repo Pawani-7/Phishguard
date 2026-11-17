@@ -30,12 +30,12 @@ OFFICIAL_DOMAINS ={
     "google": ["google.com", "google.co.in"],
     "amazon": ["amazon.com", "amazon.in"],
     "facebook": ["facebook.com"],
-    "microsoft": ["microsoft.com"],
+    "microsoft": ["microsoft.com", "microsoftonline.com"],
     "apple": ["apple.com"],
     "netflix": ["netflix.com"],
     "instagram": ["instagram.com"],
     "paytm": ["paytm.com"],
-    "hdfcbank": ["hdfcbank,com"],
+    "hdfcbank": ["hdfcbank.com"],
     }
 
 # Digits that attackers use in place of letters (paypal -> paypal)

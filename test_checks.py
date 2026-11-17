@@ -110,6 +110,7 @@ def test_brand_official_doamins_ok():
     assert impersonates_brand("https://www.paypal.com/signin") is None
     assert impersonates_brand("https://mail.google.com") is None
     assert impersonates_brand("http://example.com") is None
+    assert impersonates_brand("https://login.microsoftonline.com") is None
 
 
 def test_brand_trick_doamins():
