@@ -50,7 +50,7 @@ def risk_level(score):
 
 def analyse(url):
     """Check a link and retuen a dicitionary with:
-    url, score, level and reasons (a list of plain-language sentences.)"""
+    url, score, level and reasons"""
     if not url or not url.strip():
         return {
             "url": url,

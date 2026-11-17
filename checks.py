@@ -1,4 +1,4 @@
-"""PhishGuard: the nine link checks .
+"""PhishGuard: the eleven link checks .
 
 Each check reads only the TEXT of a link. No link is ever opened or visited.
 """
@@ -105,7 +105,7 @@ def has_many_subdomains(url, limit=3):
 
 def uses_https(url):
     """True only if the link starts with https://.
-    A link with https:// or no scheme returns False."""
+    https:// or no scheme returns False."""
     return url.strip().lower().startswith("https://")
 
 
