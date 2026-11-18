@@ -307,10 +307,10 @@ PAGE = """
                 <tbody>
                     {% for item in history %}
                     <tr>
-                        <td>{{ item.url }}</td>
-                        <td>{{ item.score }}</td>
-                        <td>{{ item.level }}</td>
-                        <td>{{ item.timestamp }}</td>
+                        <td>{{ item["url"] }}</td>
+                        <td>{{ item["score"] }}</td>
+                        <td>{{ item["level"] }}</td>
+                        <td>{{ item["checked_at"] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

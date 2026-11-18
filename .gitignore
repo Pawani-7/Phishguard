@@ -9,4 +9,5 @@ data/phishing_links_fresh.txt
 data/openphish_raw3.txt
 data/phishing_links_holdout.txt
 data/results.csv
+phishguard_history.db
 results_holdout.txt

@@ -49,8 +49,8 @@ def risk_level(score):
 
 
 def analyse(url):
-    """Check a link and retuen a dicitionary with:
-    url, score, level and reasons"""
+    """Check a link and return a dictionary with:
+    url, score, level and reasons (a list of plain-language sentences)."""
     if not url or not url.strip():
         return {
             "url": url,
