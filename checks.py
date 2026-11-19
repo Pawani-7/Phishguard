@@ -24,7 +24,7 @@ FREE_HOSTING = ["vercel.app", "pages.dev", "netlify.app", "github.io", "gitlab.i
                 "workers.dev", "onrender.com", "webflow.io", "typedream.app","carrd.co",]
 
 
-RISKY_TLDS = {"xyz", "top", "click", "icu", "info", "buzz", "cfd"}
+RISKY_TLDS = {"xyz", "top", "click", "icu", "buzz", "cfd"}
 
 #Brand name -> the real domains that brand uses 
 OFFICIAL_DOMAINS ={

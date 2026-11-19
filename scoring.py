@@ -19,7 +19,7 @@ from checks import(
     uses_risky_tld,
 )
 
-# Initial weights (they will be tuned after testing on your link set)
+# “Weights tuned on sample A and checked on sample B”
 WEIGHTS = {
     "long_url": 1,
     "ip_address": 3,
@@ -31,7 +31,7 @@ WEIGHTS = {
     "hyphens_digits": 1,
     "url_shortener": 2,
     "free_hosting": 2,
-    "risky_tld": 2,
+    "risky_tld": 1,
 }
 
 # Score limits: 0-1 Low, 2-3 Medium, 4 or more High

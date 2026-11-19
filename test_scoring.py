@@ -66,8 +66,13 @@ def test_at_in_path_is_not_flagged():
     assert result["score"] == 0
 
 
-def test_risky_tld_alone_is_medium():
-    # risky ending .xyz (+2) = 2
+def test_risky_tld_alone_is_low():
+    # risky ending .xyz (+1) = 1
     result = analyse("https://abc.xyz")
+    assert result["score"] == 1
+    assert result["level"] == "Low"
+
+def test_risky_tld_plus_no_https_is_medium():
+    result = analyse("http://example.xyz")
     assert result["score"] == 2
     assert result["level"] == "Medium"

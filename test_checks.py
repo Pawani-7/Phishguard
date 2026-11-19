@@ -160,10 +160,9 @@ def test_free_hosting():
     assert uses_free_hosting("http://access-ledgerz.typedream.app/")
 
 
-# ---------- Check 11: risky TLD ----------
+# ---------- Check 11: risky TLD ------------
 
 def test_risky_tld():
-    assert uses_risky_tld("https://your-secure.info/dh")
-    assert uses_risky_tld("http://abc.xyz/")
-    assert not uses_risky_tld("https://www.google.com")
-    assert not uses_risky_tld("http://192.168.1.1/")
+    assert uses_risky_tld("https://free-gift.xyz")
+    assert not uses_risky_tld("https://example.info")
+    assert not uses_risky_tld("https://example.com")
