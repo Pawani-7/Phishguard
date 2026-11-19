@@ -127,6 +127,13 @@ def test_brand_official_github_io():
     assert impersonates_brand("https://microsoft.github.io.evil.com/")
 
 
+def test_brand_whole_word():
+    assert impersonates_brand("http://paypa1.com") == "paypal"
+    assert impersonates_brand("http://sbi-kyc.xyz") == "sbi"
+    assert impersonates_brand("https://www.pineapple.com") is None
+    assert impersonates_brand("https://www.paypal.com") is None
+
+
 #-------------- Check 8: hyphens or digits ------------
 
 def test_hyphens_or_digits_true():

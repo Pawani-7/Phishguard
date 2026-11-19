@@ -4,6 +4,7 @@ Each check reads only the TEXT of a link. No link is ever opened or visited.
 """
 
 import ipaddress
+import re
 from urllib.parse import urlparse
 
 #------------ Data used by the checks -------------
@@ -39,7 +40,18 @@ OFFICIAL_DOMAINS ={
     "paytm": ["paytm.com"],
     "hdfcbank": ["hdfcbank.com"],
     "roblox": ["roblox.com"],
+    "sbi": ["sbi.co.in", "onlinesbi.sbi", "onlinesbi.com"],
+    "icicibank": ["icicibank.com"],
+    "axisbank": ["axisbank.com"],
+    "phonepe": ["phonepe.com"],
+    "irctc": ["irctc.co.in"],
+    "flipkart": ["flipkart.com"],
     }
+
+BRAND_EXTRAS = set(SUSPICIOUS_WORDS) | {
+    "support", "help", "care", "pay", "wallet", "online",
+    "service", "app", "my", "offer", "offers", "rewards", "kyc", "refund",
+}
 
 # Digits that attackers use in place of letters (paypal -> paypal)
 LOOKALIKE_DIGITS = str.maketrans(
@@ -131,15 +143,29 @@ def _is_official(host, domains):
     return any(host == d or host.endswith("." + d) for d in domains)
 
 
+def _token_matches_brand(token, brand):
+    """True if a word in the host is the brand, or the brand with a number
+    or a common extra word attached (paypal2, sbikyc). 'pineapple' does
+    not match 'apple'."""
+    if token == brand:
+        return True
+    if token.startswith(brand):
+        rest = token[len(brand):]
+        return rest.isdigit() or rest in BRAND_EXTRAS
+    if token.endswith(brand):
+        rest = token[:-len(brand)]
+        return rest.isdigit() or rest in BRAND_EXTRAS
+    return False
+
 def impersonates_brand(url):
-    """Return the brand name if the host imitates a known brand,
-    otherwise None."""
     host = get_host(url)
     if not host:
         return None
-    cleaned = _normalize_host(host)
+    tokens = [t for t in re.split(r"[.\-]", _normalize_host(host)) if t]
     for brand, domains in OFFICIAL_DOMAINS.items():
-        if brand in cleaned and not _is_official(host, domains):
+        if _is_official(host, domains):
+            continue
+        if any(_token_matches_brand(t, brand) for t in tokens):
             return brand
     return None
 
